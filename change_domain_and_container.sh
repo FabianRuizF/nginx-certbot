@@ -30,8 +30,8 @@ while [[ $# -gt 0 ]]
 
 new_domain=$DOMAIN_NAME
 ip=$(curl https://ipinfo.io/ip)
-sed -i 's/example.org/$new_domain/g' init-letsencrypt.sh
-sed -i 's/example.org/$new_domain/g' data/nginx/app.conf
+sed -i "s/example.org/$new_domain/g" init-letsencrypt.sh
+sed -i "s/example.org/$new_domain/g" data/nginx/app.conf
 
 
 echo $ip
