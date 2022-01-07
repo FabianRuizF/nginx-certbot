@@ -4,7 +4,7 @@ while [[ $# -gt 0 ]]
         key="$1"
         case $key in
             -p|--docker_port)
-                DOCKER_PORT="$2"
+                DOCKER_CONTAINER_PORT="$2"
                 shift
                 shift
                 ;;
@@ -32,9 +32,13 @@ new_domain=$DOMAIN_NAME
 ip=$(curl https://ipinfo.io/ip)
 sed -i "s/example.org/$new_domain/g" init-letsencrypt.sh
 sed -i "s/example.org/$new_domain/g" data/nginx/app.conf
+sed -i "s/X.X.X.X/$ip/g" data/nginx/app.conf
+sed -i "s/YYYY/$DOCKER_CONTAINER_PORT/g" data/nginx/app.conf
+sed -i "s/example_container_name/$DOCKER_CONTAINER_NAME/g" data/nginx/app.conf
 
 
-echo $ip
-echo $DOCKER_PORT
+echo $ip:$DOCKER_PORT
 echo $DOCKER_CONTAINER_NAME
 echo $DOMAIN_NAME
+
+
