@@ -34,7 +34,7 @@ sed -i "s/example.org/$new_domain/g" init-letsencrypt.sh
 sed -i "s/example.org/$new_domain/g" data/nginx/app.conf
 sed -i "s/X.X.X.X/$ip/g" data/nginx/app.conf
 sed -i "s/YYYY/$DOCKER_CONTAINER_PORT/g" data/nginx/app.conf
-sed -i "s/example_container_name/$DOCKER_CONTAINER_NAME/g" data/nginx/app.conf
+sed -i "s/example_container_name/$DOCKER_CONTAINER_NAME:$DOCKER_CONTAINER_PORT/g" data/nginx/app.conf
 
 
 echo $ip:$DOCKER_PORT
